@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Login Page</title>
-	</head>
-	<body>
-		<form action = "/cgi-bin/python.py" method = "POST" >
-<center>			<input class="box" type="text" placeholder="  Username" name="Username" required="required" aria-required="true" autofocus="" aria-invalid="true" /></br>
-			<input class="sox" type="password" placeholder=" Password" name="Password" required /></br>
-			<input class="box lox"type="submit" value="Login" /></br>
-</center>		</form>
-	</body>
+<head>
+     <title> Web Application Login Page </title>
+     <style>
+         form { padding-top: 120px;
+             	text-align: center;
+             	font-size; 50px;}
+      </style>
+</head>
+<body>
+<form action="/cgi-bin/python.py" method="POST">
+Username: <input type="text" name="Username" placeholder="Username"><br><br>	
+Password: <input type="password" name="Password" placeholder="Password"><br><br>	
+<input type="submit" value="Login">
+</form>
+</body>
 </html>
