@@ -1,0 +1,23 @@
+version: "3.1"
+services:
+ webapp1:
+  image: webhost:v1
+  build: .
+  environment:
+   MYSQL_HOST: data
+  depends_on:
+   - db
+  restart: always
+  container_name: website
+  ports:
+   - 8080:80
+ db:
+  image: mysql:v1
+  build:
+          context: .
+          dockerfile: mysql.dockerfile
+  restart: always
+  container_name: data
+  environment:
+   MYSQL_ROOT_PASSWORD: redhat123
+
