@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  namenode:
+    image: namenode1:v1
+    container_name: namenode1
+    hostname: namenode.cluster1.com
+    restart: always
+    ports:
+     - "50070:50070"
+    networks:
+      cluster:
+        ipv4_address: 172.30.0.5
+    build: .
+    
+       
+
+
+
+networks:
+    cluster:
+      driver: bridge 
+      ipam:
+        config:
+          - subnet: 172.30.0.0/16
+
