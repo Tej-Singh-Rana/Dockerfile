@@ -10,12 +10,12 @@ mydb = mysql.connector.connect(
   host="data",
   user="root",
   passwd="redhat123",
-  database="register"
+  database="users"
 )
 
 mycursor = mydb.cursor()
-#mycursor.execute("select * from login")
-#myresult = mycursor.fetchall() # it gives the list
+mycursor.execute("select * from login")
+myresult = mycursor.fetchall() # it gives the list
 
 # Create instance of FieldStorage
 print ("Content-Type: text/html\n")
@@ -26,17 +26,15 @@ form = cgi.FieldStorage()
 username = form.getvalue('Username')
 password  = form.getvalue('Password')
 
-def create_table():
-    mycursor.execute()
-def data_entry():
-    name = username
-    pass1 = password
-    mycursor.execute("INSERT INTO register (username, password) VALUES (?,?)", (name,pass1))
-    mydb.commit()
 
-create_table()
-data_entry()
+for row in myresult:
+        if (username == row[0]) and (password == row[1]):
+                print("Content-Type: text/html\n")
+                print("<pre><h2>Welcome to this Official Page</h2></pre>")
+
+        else:
+                print("Content-Type: text/html\n")
+                print("<h2>Username and Password Incorrect</h2>")
 
 
 mycursor.close()
-mydb.close()

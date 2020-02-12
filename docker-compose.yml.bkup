@@ -9,9 +9,11 @@ services:
    - db
   restart: always
   container_name: website
+  networks:
+     - dock_net:
+          ipv4_address: 172.20.0.2
   ports:
-   - 8080:80
-
+   - 5656:80
  db:
   image: mysql:v1
   build:
@@ -19,8 +21,19 @@ services:
           dockerfile: mysql.dockerfile
   restart: always
   container_name: data
+  networks:
+      - dock_net:
+          ipv4_address: 172.20.0.3
   environment:
    MYSQL_ROOT_PASSWORD: redhat123
+
+ networks:                         #Providing static ip...
+      dock_net:
+          driver: bridge
+          ipam:
+            config:
+               - subnet: 172.20.0.0/16
+          #    - gateway: 172.20.0.1       
 
 
 
