@@ -1,4 +1,4 @@
-CREATE TABLE login(
-Username varchar(25),
-Password Varchar(25)
+CREATE TABLE register(
+username VARCHAR(25) NOT NULL,
+password VARCHAR(25) NOT NULL,
 );
